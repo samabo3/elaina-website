@@ -137,7 +137,7 @@ function HeroSection() {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img 
-          src="/elaina-hero.jpg" 
+          src="./elaina-hero.jpg" 
           alt="Elaina" 
           className="w-full h-full object-cover opacity-60"
         />
@@ -199,7 +199,7 @@ function AboutSection() {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl blur-xl" />
             <img 
-              src="/elaina-reading.jpg" 
+              src="./elaina-reading.jpg" 
               alt="Elaina Reading" 
               className="relative rounded-2xl w-full shadow-2xl"
             />
@@ -257,7 +257,7 @@ function MusicPlayerSection() {
 
   // Initialize audio element
   useEffect(() => {
-    const audio = new Audio('/literature.mp3')
+    const audio = new Audio('./literature.mp3')
     audioRef.current = audio
     audio.volume = volume / 100
 
@@ -359,7 +359,7 @@ function MusicPlayerSection() {
     <section id="music" className="py-24 px-6 relative">
       <div className="absolute inset-0">
         <img 
-          src="/elaina-music.jpg" 
+          src="./elaina-music.jpg" 
           alt="Music Background" 
           className="w-full h-full object-cover opacity-30"
         />
@@ -432,7 +432,7 @@ function MusicPlayerSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full animate-pulse-glow" />
               <div className="absolute inset-2 bg-gray-900 rounded-full flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/elaina-music.jpg" 
+                  src="./elaina-music.jpg" 
                   alt="Album Art" 
                   className={`w-full h-full object-cover transition-transform duration-700 ${isPlaying ? 'scale-110' : 'scale-100'}`}
                 />
@@ -527,10 +527,10 @@ function MusicPlayerSection() {
 // Gallery section
 function GallerySection() {
   const images = [
-    { src: "/elaina-hero.jpg", title: "The Ashen Witch" },
-    { src: "/elaina-reading.jpg", title: "Lost in Stories" },
-    { src: "/elaina-flying.jpg", title: "Journey Begins" },
-    { src: "/elaina-music.jpg", title: "Melodies of Magic" },
+    { src: "./elaina-hero.jpg", title: "The Ashen Witch" },
+    { src: "./elaina-reading.jpg", title: "Lost in Stories" },
+    { src: "./elaina-flying.jpg", title: "Journey Begins" },
+    { src: "./elaina-music.jpg", title: "Melodies of Magic" },
   ]
 
   return (
