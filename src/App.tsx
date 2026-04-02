@@ -252,34 +252,47 @@ function MusicPlayerSection() {
   const [activeLyricIndex, setActiveLyricIndex] = useState(0)
   const [showRomaji, setShowRomaji] = useState(true)
   const [showEnglish, setShowEnglish] = useState(true)
+  const [audioError, setAudioError] = useState<string | null>(null)
   const lyricsRef = useRef<HTMLDivElement>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   // Initialize audio element
   useEffect(() => {
-    const audio = new Audio('./literature.mp3')
+    const audio = new Audio('/literature.mp3')
     audioRef.current = audio
     audio.volume = volume / 100
 
-    // Update duration when metadata is loaded
-    audio.addEventListener('loadedmetadata', () => {
+    // Error handling when audio asset is missing or fails to load
+    const onError = () => {
+      setAudioError('Unable to load audio. Ensure public/literature.mp3 exists or provide a valid MP3 URL.')
+      setIsPlaying(false)
+    }
+
+    const onLoadedMetadata = () => {
       if (audio.duration) {
         setDuration(Math.floor(audio.duration))
       }
-    })
+    }
 
-    // Update current time during playback
-    audio.addEventListener('timeupdate', () => {
+    const onTimeUpdate = () => {
       setCurrentTime(audio.currentTime)
-    })
+    }
 
-    // Handle song end
-    audio.addEventListener('ended', () => {
+    const onEnded = () => {
       setIsPlaying(false)
       setCurrentTime(0)
-    })
+    }
+
+    audio.addEventListener('error', onError)
+    audio.addEventListener('loadedmetadata', onLoadedMetadata)
+    audio.addEventListener('timeupdate', onTimeUpdate)
+    audio.addEventListener('ended', onEnded)
 
     return () => {
+      audio.removeEventListener('error', onError)
+      audio.removeEventListener('loadedmetadata', onLoadedMetadata)
+      audio.removeEventListener('timeupdate', onTimeUpdate)
+      audio.removeEventListener('ended', onEnded)
       audio.pause()
       audio.src = ''
     }
@@ -336,6 +349,9 @@ function MusicPlayerSection() {
   }
 
   const togglePlay = () => {
+    if (audioError) {
+      return
+    }
     setIsPlaying(!isPlaying)
   }
 
@@ -484,6 +500,14 @@ function MusicPlayerSection() {
                 <SkipForward className="w-6 h-6" />
               </button>
             </div>
+
+            {audioError && (
+              <div className="mb-4 rounded-lg border border-red-500 bg-red-900/30 p-3 text-sm text-red-100">
+                {audioError}
+                <br />
+                Add `literature.mp3` to `public/` and restart dev server, or update `src/App.tsx` to use an external URL.
+              </div>
+            )}
 
             {/* Volume Control */}
             <div className="flex items-center gap-3">
