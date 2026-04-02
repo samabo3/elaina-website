@@ -1,0 +1,276 @@
+/* App-specific styles */
+
+/* Pulse animation for visualizer */
+@keyframes pulse {
+  0% {
+    transform: scaleY(0.3);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Custom slider styling */
+[data-slot="slider-track"] {
+  background: rgba(139, 92, 246, 0.2) !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+}
+
+[data-slot="slider-range"] {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899) !important;
+  border-radius: 3px !important;
+}
+
+[data-slot="slider-thumb"] {
+  background: white !important;
+  border: 2px solid #8b5cf6 !important;
+  width: 16px !important;
+  height: 16px !important;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5) !important;
+}
+
+[data-slot="slider-thumb"]:hover {
+  transform: scale(1.2) !important;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.8) !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(139, 92, 246, 0.4);
+  color: white;
+}
+
+/* Focus styling */
+*:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Button hover effects */
+button {
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Image hover effects */
+img {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Glass card hover */
+.glass:hover,
+.glass-dark:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* Lyric scroll styling */
+.lyric-line {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.lyric-line:hover {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.lyric-line.active {
+  background: rgba(139, 92, 246, 0.2);
+}
+
+/* Music player album art rotation */
+@keyframes slow-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.album-art-rotate {
+  animation: slow-rotate 20s linear infinite;
+}
+
+.album-art-paused {
+  animation-play-state: paused;
+}
+
+/* Navigation blur effect */
+nav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Section transitions */
+section {
+  position: relative;
+}
+
+/* Hero parallax effect */
+#hero img {
+  will-change: transform;
+}
+
+/* Stats card hover */
+.glass {
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2);
+}
+
+/* Gallery image overlay */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+/* Scroll indicator animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-5px) translateX(-50%);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+/* Text gradient animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 3rem;
+  }
+  
+  .glass-dark {
+    padding: 1.5rem;
+  }
+  
+  .lyric-line {
+    padding: 0.75rem;
+  }
+}
+
+/* Custom scrollbar for lyrics */
+.lyrics-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.lyrics-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lyrics-container::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 2px;
+}
+
+.lyrics-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* Volume slider compact */
+.volume-slider [data-slot="slider-track"] {
+  height: 4px !important;
+}
+
+.volume-slider [data-slot="slider-thumb"] {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+/* Play button glow */
+button:has(.w-8) {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+button:has(.w-8):hover {
+  box-shadow: 0 0 50px rgba(139, 92, 246, 0.6);
+}
+
+/* Star twinkle variation */
+.star:nth-child(odd) {
+  animation-duration: 2s;
+}
+
+.star:nth-child(even) {
+  animation-duration: 3s;
+  animation-delay: 0.5s;
+}
+
+.star:nth-child(3n) {
+  width: 3px;
+  height: 3px;
+}
+
+/* Loading state for images */
+img {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+}
+
+/* Footer gradient */
+footer {
+  background: linear-gradient(to top, rgba(25, 16, 45, 0.8), transparent);
+}
+
+/* Button ripple effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
