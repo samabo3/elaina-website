@@ -258,7 +258,7 @@ function MusicPlayerSection() {
 
   // Initialize audio element
   useEffect(() => {
-    const audio = new Audio('/literature.mp3')
+    const audio = new Audio('./literature.mp3')
     audioRef.current = audio
     audio.volume = volume / 100
 
